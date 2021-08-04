@@ -5,7 +5,7 @@ import javax.persistence.Id;
 public class Doce {
 
     @Id
-    private String id;
+    private Integer id;
     private String nome;
     private String preço;
     private String sabor;
@@ -14,10 +14,10 @@ public class Doce {
     private String estoque;
 
      //#region Getters e Setters
-     public String getId() {
+     public Integer getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public String getNome() {
@@ -68,7 +68,7 @@ public class Doce {
         this.quantidade = quantidade;
         this.estoque = estoque;
     }
-    public Doce(String id, String nome, String preço, String sabor, String tamanho, Integer quantidade,
+    public Doce(Integer id, String nome, String preço, String sabor, String tamanho, Integer quantidade,
             String estoque) {
         this.id = id;
         this.nome = nome;
