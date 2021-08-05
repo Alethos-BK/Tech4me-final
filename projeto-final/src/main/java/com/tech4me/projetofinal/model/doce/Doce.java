@@ -1,4 +1,4 @@
-package com.tech4me.projetofinal.model;
+package com.tech4me.projetofinal.model.doce;
 
 import javax.persistence.Id;
 

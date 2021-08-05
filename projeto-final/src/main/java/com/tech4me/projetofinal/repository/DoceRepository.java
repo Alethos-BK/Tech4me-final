@@ -2,7 +2,7 @@ package com.tech4me.projetofinal.repository;
 
 import java.util.Optional;
 
-import com.tech4me.projetofinal.model.Doce;
+import com.tech4me.projetofinal.model.doce.Doce;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

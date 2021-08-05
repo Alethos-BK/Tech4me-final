@@ -1,24 +1,26 @@
-package com.tech4me.projetofinal.service;
+package com.tech4me.projetofinal.service.doce;
 
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Optional;
 
-import com.tech4me.projetofinal.model.Doce;
+import com.tech4me.projetofinal.model.doce.Doce;
 import com.tech4me.projetofinal.repository.DoceRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DoceService {
-    
+public class DoceServiceImpl implements DoceService {
+
     @Autowired
     private DoceRepository doceRepository;
 
+    @Override
     public List<Doce> obterTodos(){
         return doceRepository.findAll();
     }
+
 
     public Optional<Doce> obterPorId(Integer id){
         return doceRepository.findById(id);
