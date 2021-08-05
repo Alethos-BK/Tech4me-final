@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "projeto-final"
+		},
+		{
+			"name": "eureka-server",
+			"path": "eureka-server"
+		}
+	],
+	"settings": {}
+}
