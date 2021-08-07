@@ -6,7 +6,13 @@
 		{
 			"name": "eureka-server",
 			"path": "eureka-server"
+		},
+		{
+			"name": "zull-server",
+			"path": "zull-server"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
 }

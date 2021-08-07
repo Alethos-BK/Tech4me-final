@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.tech4me.projetofinal.model.cliente.Cliente;
 import com.tech4me.projetofinal.service.cliente.ClienteService;
+import com.tech4me.projetofinal.shared.ClienteDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,12 +27,12 @@ public class ClienteController {
     private ClienteService _clienteService;
 
     @GetMapping()
-    public ResponseEntity<List<Cliente>> obterTodos(){
+    public ResponseEntity<List<ClienteDto>> obterTodos(){
         return new ResponseEntity<>(_clienteService.obterTodos(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public Optional<Cliente> obterPorId(Long id){
+    public ClienteDto obterPorId(Long id){
         return _clienteService.obterPorId(id);
     }
 
@@ -46,7 +47,8 @@ public class ClienteController {
     }
 
     @DeleteMapping("/{id}")
-    public Cliente deletar(Long id){
-        return _clienteService.deletar(id);
+    public ResponseEntity<Void> deletar(Long id){
+        _clienteService.deletar(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

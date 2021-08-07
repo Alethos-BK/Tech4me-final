@@ -3,8 +3,8 @@ package com.tech4me.projetofinal.controller;
 import java.util.List;
 import java.util.Optional;
 
-import com.tech4me.projetofinal.model.Doce;
-import com.tech4me.projetofinal.service.DoceService;
+import com.tech4me.projetofinal.model.doce.Doce;
+import com.tech4me.projetofinal.service.doce.DoceService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
