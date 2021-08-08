@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "eureka-server"
+		},
+		{
+			"name": "projeto-final",
+			"path": "projeto-final"
+		},
+		{
+			"path": "zull-server"
+		}
+	],
+
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+
+	}
+}
