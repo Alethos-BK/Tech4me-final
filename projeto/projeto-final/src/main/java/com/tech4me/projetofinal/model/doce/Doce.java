@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.tech4me.projetofinal.model.pedido.Pedido;
 
 @Entity
 public class Doce {
@@ -18,6 +22,9 @@ public class Doce {
     private Integer quantidade;
     private String estoque;
 
+    @ManyToOne
+    @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
 
      //#region Getters e Setters
      public Long getId() {
