@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.tech4me.projetofinal.model.cliente.Cliente;
+import com.tech4me.projetofinal.model.cliente.Endereco;
+import com.tech4me.projetofinal.model.cliente.EnderecoViaCep;
 import com.tech4me.projetofinal.repository.ClienteRepository;
 import com.tech4me.projetofinal.shared.ClienteDto;
 
@@ -19,6 +21,9 @@ public class ClienteServiceImpl implements ClienteService{
     @Autowired
     private ClienteRepository _clienteRepository;
 
+    @Autowired
+    private CepService _serviceCep;
+
     @Override
     public List<ClienteDto> obterTodos(){
         
@@ -29,17 +34,17 @@ public class ClienteServiceImpl implements ClienteService{
     }
 
     @Override
-    public ClienteDto obterPorId(Long id){
+    public Optional<Cliente> obterPorId(Long id){
 
-        ModelMapper mapper = new ModelMapper();
         Optional<Cliente> cliente = _clienteRepository.findById(id);
 
-        return mapper.map(cliente.get(), ClienteDto.class);
+        return cliente;
     }
 
     @Override
     public Cliente atualizar(Long id, Cliente cliente){
         cliente.setId(id);
+        ligarViaCepComEdereco(cliente.getEndereco());
         _clienteRepository.save(cliente);
         return cliente;
     }
@@ -47,15 +52,26 @@ public class ClienteServiceImpl implements ClienteService{
     @Override
     public Cliente cadastrar(Cliente cliente){
         cliente.setId(null);
+        ligarViaCepComEdereco(cliente.getEndereco());
         _clienteRepository.save(cliente);
         return cliente;
     }
 
     @Override
     public void deletar(Long id){
-        ClienteDto cliente = obterPorId(id);
+        Optional<Cliente> cliente = obterPorId(id);
         
         _clienteRepository.deleteById(id);
+    }
+
+    private void ligarViaCepComEdereco(Endereco endereco){
+
+        EnderecoViaCep enderecoViaCep = _serviceCep.obterEndereco(endereco.getCep());
+        endereco.setRua((enderecoViaCep.getLogradouro()));
+        endereco.setComplemento((enderecoViaCep.getComplemento()));
+        endereco.setBairro(enderecoViaCep.getBairro());
+        endereco.setCidade(enderecoViaCep.getLocalidade());
+        endereco.setEstado(enderecoViaCep.getUf());
     }
     
 }

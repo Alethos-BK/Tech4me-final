@@ -10,7 +10,7 @@ public class Doce {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String nome;
     private String preço;
     private String sabor;
@@ -18,11 +18,12 @@ public class Doce {
     private Integer quantidade;
     private String estoque;
 
+
      //#region Getters e Setters
-     public Integer getId() {
+     public Long getId() {
         return id;
     }
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getNome() {
@@ -63,26 +64,6 @@ public class Doce {
     }
     //#endregion
 
-    public Doce(){}
-    
-    public Doce(String nome, String preço, String sabor, String tamanho, Integer quantidade, String estoque) {
-        this.nome = nome;
-        this.preço = preço;
-        this.sabor = sabor;
-        this.tamanho = tamanho;
-        this.quantidade = quantidade;
-        this.estoque = estoque;
-    }
-    public Doce(Integer id, String nome, String preço, String sabor, String tamanho, Integer quantidade,
-            String estoque) {
-        this.id = id;
-        this.nome = nome;
-        this.preço = preço;
-        this.sabor = sabor;
-        this.tamanho = tamanho;
-        this.quantidade = quantidade;
-        this.estoque = estoque;
-    }
 
   
 

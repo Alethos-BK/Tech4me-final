@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DoceRepository extends JpaRepository<Doce, Integer> {
+public interface DoceRepository extends JpaRepository<Doce, Long> {
     
-    Optional<Doce> findById(Integer id);
+    Optional<Doce> findById(Long id);
 
     Optional<Doce> findByNome(String nome);
 }

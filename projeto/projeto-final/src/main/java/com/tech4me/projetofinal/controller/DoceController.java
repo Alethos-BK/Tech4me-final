@@ -31,12 +31,12 @@ public class DoceController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Doce> obterPorId(Integer id){
+    public Optional<Doce> obterPorId(@PathVariable(value="id") Long id){
         return doceService.obterPorId(id);
     }
 
     @PutMapping("/{id}")
-    public Doce atualizar(@PathVariable Integer id, @RequestBody Doce doce){
+    public Doce atualizar(@PathVariable Long id, @RequestBody Doce doce){
         return doceService.atualizar(id, doce);
     }
 
@@ -46,7 +46,7 @@ public class DoceController {
     }
 
     @DeleteMapping("/{id}")
-    public Doce deletar(Integer id){
+    public Doce deletar(@PathVariable(value="id") Long id){
         return doceService.deletar(id);
     }
 }

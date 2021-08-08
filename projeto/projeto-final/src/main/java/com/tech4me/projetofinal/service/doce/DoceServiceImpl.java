@@ -22,12 +22,12 @@ public class DoceServiceImpl implements DoceService {
     }
 
     @Override
-    public Optional<Doce> obterPorId(Integer id){
+    public Optional<Doce> obterPorId(Long id){
         return doceRepository.findById(id);
     }
 
     @Override
-    public Doce atualizar(Integer id, Doce doce){
+    public Doce atualizar(Long id, Doce doce){
         doce.setId(id);
         doceRepository.save(doce);
         return doce;
@@ -41,7 +41,7 @@ public class DoceServiceImpl implements DoceService {
     }
 
     @Override
-    public Doce deletar(Integer id){
+    public Doce deletar(Long id){
         Optional<Doce> doce = obterPorId(id);
         if(doce.isEmpty()){
             throw new InputMismatchException("Infelizmente o doce não encontrado.");

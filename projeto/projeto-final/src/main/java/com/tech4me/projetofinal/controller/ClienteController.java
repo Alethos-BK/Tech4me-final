@@ -32,7 +32,7 @@ public class ClienteController {
     }
 
     @GetMapping("/{id}")
-    public ClienteDto obterPorId(Long id){
+    public Optional<Cliente> obterPorId(@PathVariable(value ="id") Long id){
         return _clienteService.obterPorId(id);
     }
 
@@ -47,7 +47,7 @@ public class ClienteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(Long id){
+    public ResponseEntity<Void> deletar(@PathVariable(value="id") Long id){
         _clienteService.deletar(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

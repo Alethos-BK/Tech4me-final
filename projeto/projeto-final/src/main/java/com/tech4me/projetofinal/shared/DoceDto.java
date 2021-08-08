@@ -2,7 +2,7 @@ package com.tech4me.projetofinal.shared;
 
 public class DoceDto {
 
-    private Integer id;
+    private Long id;
     private String nome;
     private String preço;
     private String sabor;
@@ -11,10 +11,10 @@ public class DoceDto {
     private String estoque;
 
     //#region Getters e Setters
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getNome() {

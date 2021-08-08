@@ -1,4 +1,4 @@
-package com.tech4me.zullserver;
+package br.com.tech4me.zuulserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,10 +8,10 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableZuulProxy
-public class ZullServerApplication {
+public class ZuulServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ZullServerApplication.class, args);
+		SpringApplication.run(ZuulServerApplication.class, args);
 	}
 
 }
