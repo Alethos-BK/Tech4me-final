@@ -4,7 +4,7 @@ public class DoceDto {
 
     private Long id;
     private String nome;
-    private String preço;
+    private Double preço;
     private String sabor;
     private String tamanho;
     private Integer quantidade;
@@ -23,10 +23,10 @@ public class DoceDto {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getPreço() {
+    public Double getPreço() {
         return preço;
     }
-    public void setPreço(String preço) {
+    public void setPreço(Double preço) {
         this.preço = preço;
     }
     public String getSabor() {

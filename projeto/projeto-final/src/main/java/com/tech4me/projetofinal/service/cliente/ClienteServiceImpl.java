@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.tech4me.projetofinal.exception.NotFoundException;
 import com.tech4me.projetofinal.model.cliente.Cliente;
 import com.tech4me.projetofinal.model.cliente.Endereco;
 import com.tech4me.projetofinal.model.cliente.EnderecoViaCep;
@@ -38,7 +39,12 @@ public class ClienteServiceImpl implements ClienteService{
 
         Optional<Cliente> cliente = _clienteRepository.findById(id);
 
-        return cliente;
+        if(cliente.isPresent()){
+            return cliente;
+        }
+
+        throw new NotFoundException("Pedido com o id: " + id + " não encontrado");
+
     }
 
     @Override

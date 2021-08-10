@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Optional;
 
+import com.tech4me.projetofinal.exception.NotFoundException;
 import com.tech4me.projetofinal.model.doce.Doce;
 import com.tech4me.projetofinal.repository.DoceRepository;
 
@@ -23,7 +24,13 @@ public class DoceServiceImpl implements DoceService {
 
     @Override
     public Optional<Doce> obterPorId(Long id){
-        return doceRepository.findById(id);
+        Optional<Doce> doce = doceRepository.findById(id);
+
+        if(doce.isPresent()){
+            return doce;
+        }
+
+        throw new NotFoundException("Doce com o id: " + id + " não encontrado");
     }
 
     @Override

@@ -70,12 +70,6 @@ public class PedidoDto {
 
     public Double getValorTotal() {
         return valorTotal;
-    }
-
-    public void setValorTotal(Double valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
-    
+    }   
 
 }

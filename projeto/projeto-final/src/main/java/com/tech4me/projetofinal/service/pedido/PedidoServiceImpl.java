@@ -4,8 +4,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.tech4me.projetofinal.exception.NotFoundException;
+import com.tech4me.projetofinal.model.cliente.Cliente;
+import com.tech4me.projetofinal.model.doce.Doce;
 import com.tech4me.projetofinal.model.pedido.Pedido;
 import com.tech4me.projetofinal.repository.PedidoRepository;
+import com.tech4me.projetofinal.service.cliente.ClienteService;
+import com.tech4me.projetofinal.service.doce.DoceService;
 import com.tech4me.projetofinal.shared.PedidoDto;
 
 import org.modelmapper.ModelMapper;
@@ -17,6 +22,12 @@ public class PedidoServiceImpl implements PedidoService{
 
     @Autowired
     private PedidoRepository _pedidoRepository;
+
+    @Autowired
+    private ClienteService _clienteService;
+
+    @Autowired
+    private DoceService _doceService;
 
     @Override
     public List<PedidoDto> obterTodos(){
@@ -30,7 +41,13 @@ public class PedidoServiceImpl implements PedidoService{
     @Override
     public Optional<Pedido> obterPorId(Long id){
 
-        return _pedidoRepository.findById(id);
+        Optional<Pedido> pedido = _pedidoRepository.findById(id);
+
+        if(pedido.isPresent()){
+            return pedido;
+        }
+
+        throw new NotFoundException("Pedido com o id: " + id + " não encontrado");
     }
 
     @Override
@@ -39,7 +56,7 @@ public class PedidoServiceImpl implements PedidoService{
         ModelMapper mapper = new ModelMapper();
 
         Pedido pedido = mapper.map(pedidoDto, Pedido.class);
-        
+        //pedido.obterValorTotal();
         return _pedidoRepository.save(pedido);
 
     }
@@ -66,5 +83,6 @@ public class PedidoServiceImpl implements PedidoService{
     
         _pedidoRepository.deleteById(id);
     }
+
     
 }

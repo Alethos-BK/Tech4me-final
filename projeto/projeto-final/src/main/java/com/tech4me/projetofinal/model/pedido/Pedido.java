@@ -28,7 +28,7 @@ public class Pedido {
     private Cliente cliente;
 
     @OneToMany(mappedBy = "pedido")
-    private List<Doce> doce;
+    private List<Doce> doces;
 
     private Double valorTotal;
 
@@ -57,22 +57,25 @@ public class Pedido {
     }
 
     public List<Doce> getDoce() {
-        return doce;
+        return doces;
     }
 
     public void setDoce(List<Doce> doce) {
-        this.doce = doce;
+        this.doces = doce;
     }
 
     public Double getValorTotal() {
-        return valorTotal;
+        return  this.valorTotal;
     }
 
-    public void setValorTotal(Double valorTotal) {
-        this.valorTotal = valorTotal;
+
+    public Double obterValorTotal(){
+
+        for (Doce doce : doces) {
+            this.valorTotal += doce.getPreço();
+        }
+
+    return this.valorTotal;
     }
-
-    
-
-
 }
+

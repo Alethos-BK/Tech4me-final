@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 import com.tech4me.projetofinal.model.pedido.Pedido;
 
@@ -15,11 +16,19 @@ public class Doce {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
     private String nome;
-    private String preço;
+
+    private Double preço;
+
+    @NotNull
     private String sabor;
+
     private String tamanho;
+
     private Integer quantidade;
+    
     private String estoque;
 
     @ManyToOne
@@ -39,10 +48,10 @@ public class Doce {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getPreço() {
+    public Double getPreço() {
         return preço;
     }
-    public void setPreço(String preço) {
+    public void setPreço(Double preço) {
         this.preço = preço;
     }
     public String getSabor() {
